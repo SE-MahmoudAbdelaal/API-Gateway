@@ -4,24 +4,13 @@ spring:
       mvc:
         routes:
           - id: order-api
-            uri: lb://order-api #
+            uri: lb://order-api
             predicates:
                - Path=/shop/**
           - id: product-api
             uri: lb://product-api
             predicates:
               - Path=/products/**
-            metadata:
-              cors:
-              allowedOrigins: 'http://localhost:4200'
-              allowedMethods:
-                - GET
-                - POST
-                - DELETE
-                - OPTIONS
-                - PUT
-              allowedHeaders: '*'
-              maxAge: 30
           - id: coupon-api
             uri: lb://coupon-api
             predicates:
@@ -30,14 +19,3 @@ spring:
             uri: lb://user-api
             predicates:
               - Path=/users/**
-            metadata:
-              cors:
-                allowedOrigins: 'http://localhost:4200'
-                allowedMethods:
-                  - GET
-                  - POST
-                  - DELETE
-                  - OPTIONS
-                  - PUT
-                allowedHeaders: '*'
-                maxAge: 30
